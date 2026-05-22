@@ -1,37 +1,76 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-struct Barco
+struct alumno
 {
-    char nombre [20];
-    int peso;
-    int tripulacion;
-    int tam;
+    char nombre[20];
+    float cal;
+    int Act;
+    int derecho;
+    int edad;
 };
 
-    int f_bajan(struct Barco *p)
+struct grupo
 {
-    p->tripulacion -= 2;
+    char nombre[20];
+    float cal;
+    int Act;
+    int derecho;
+    int edad;
+};
 
-    if (p->tripulacion <= 0) {
-        return 0;
-    } else {
-        return f_bajan(p);
-    }
-}
 
 int main()
 {
-    struct Barco Totopo;
-    //printf ("%d", Totopo);
-    Totopo.peso=1000;
-    Totopo.tripulacion=10;
-    printf("El peso del barco Totopo es: %d\n", Totopo.peso);
+    struct alumno Paola;
+    struct grupo alumnos [3];
+    int i;
 
-    struct Barco *p;
-    p=&Totopo;
-    f_bajan(p);
+    printf ("\nIngresa el nombre del alumno: ");
+    fgets(Paola.nombre, sizeof(Paola.nombre), stdin);
+    Paola.nombre[strcspn(Paola.nombre, "\n")] = '\0';
+
+    printf ("\nIngresa la edad del alumno: ");
+    scanf ("%d", &Paola.edad);
+    getchar();
+
+    printf ("\nIngresa la calificacion del alumno: ");
+    scanf ("%f", &Paola.cal);
+    getchar();
+
+
+    printf("\nEl nombre es: %s", Paola.nombre);
+    printf ("\nLa edad del alumno es: %d",Paola.edad);
+    printf ("\nLa calificacion es: %.2f\n",Paola.cal);
+
+
+for (i=0; i<3; i++)
+    {
+        printf ("\nIngrese el nombre del alumno %d :", i+1);
+        fgets(alumnos[i].nombre, sizeof(alumnos[i].nombre), stdin);
+        alumnos[i].nombre[strcspn(alumnos[i].nombre, "\n")] = '\0'; //eliminar salto de linea
+        printf("\nEl nombre del alumno %d es: %s\n",i+1, alumnos[i].nombre);
+
+        printf("Ingrese la edad del alumno %d: ", i+1);
+        scanf("%d", &alumnos[i].edad);
+        getchar
+
+        printf("Ingrese la calificacion del alumno %d: ", i+1);
+        scanf("%d", &alumnos[i].cal);
+        getchar();
+
+
+
+    }
+
+
+
+
+
+
 
     return 0;
 }
+
 
